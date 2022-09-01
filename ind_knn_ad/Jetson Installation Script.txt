@@ -1,0 +1,36 @@
+# Industrial KNN-based Anomaly Detection 
+# https://github.com/rvorias/ind_knn_ad
+#
+# Jetson AGX 16GB  Cuda 10.2 Installation Script
+# Theerawat 24-Jan-22
+#
+$ sudo apt-get purge libreoffice*
+$ sudo apt-get clean
+$ sudo apt-get update && sudo apt-get upgrade
+$ sudo apt-get install git cmake
+$ sudo apt update && sudo apt upgrade && sudo apt install curl && sudo apt-get install libcurl4-openssl-dev
+#
+$ wget https://repo.anaconda.com/miniconda/Miniconda3-py37_4.10.3-Linux-aarch64.sh 
+$ chmod +x Miniconda3-py37_4.10.3-Linux-aarch64.sh  
+$ ./Miniconda3-py37_4.10.3-Linux-aarch64.sh  
+$ conda update conda
+$ conda create -n ind_knn_ad python=3.7
+$ conda activate ind_knn_ad
+$ git clone https://github.com/rvorias/ind_knn_ad.git
+(ind_knn_ad)$ pip install streamlit==0.86.0
+(ind_knn_ad)$ pip install wget==3.2
+(ind_knn_ad)$ pip install matplotlib==3.3.4
+(ind_knn_ad)$ pip install timm==0.4.12
+(ind_knn_ad)$ pip install click==7.1.2
+(ind_knn_ad)$ pip install torch==1.9.0
+(ind_knn_ad)$ pip install tqdm==4.61.2
+(ind_knn_ad)$ pip install numpy==1.19.5
+(ind_knn_ad)$ pip install torchvision==0.10.0
+(ind_knn_ad)$ pip install Pillow==8.3.1
+(ind_knn_ad)$ pip install PyYAML==5.4.1
+(ind_knn_ad)$ pip install scikit_learn==0.24.2
+(ind_knn_ad)$ pip install faiss-cpu   
+(ind_knn_ad)$ echo 'export OPENBLAS_CORETYPE=ARMV8' >> ~/.bashrc #### Solve Illegal instruction(core dumped) error on Jetson Nano
+(ind_knn_ad)$ source ~/.bashrc   #### Solve Illegal instruction(core dumped) error on Jetson Nano
+(ind_knn_ad)$ python -m pip install -I matplotlib #### Solve cannot import name 'ft2font' from 'matplotlib' 
+(ind_knn_ad)$ streamlit run streamlit_app.py
