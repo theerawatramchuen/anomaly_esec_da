@@ -26,9 +26,9 @@ from data import IMAGENET_MEAN, IMAGENET_STD
 import glob
 
 ## Input Parameter Start Here ##
-acm = 110   # Anomaly Score Max
-path_anomaly_image = r'E:/30-8-2022/cropped/anomaly_img/'         # Path for store anomaly images
-path_test_img_dir = r'E:/30-8-2022/cropped/'  # Path for image under test
+acm = 120   # Anomaly Score Max
+path_anomaly_image = r'E:/2-9-2022/black-not/cropped/reject/'         # Path for store anomaly images
+path_test_img_dir = r'E:/2-9-2022/black-not/cropped/'  # Path for image under test
 ## Input Parameter End Here ##
 
 path_test_img_dir_len = len(path_test_img_dir)
@@ -91,7 +91,7 @@ def main():
             gray = cv2.cvtColor(t, cv2.COLOR_BGR2GRAY)
             image = cv2.rotate(gray, cv2.ROTATE_90_CLOCKWISE)
             # cv2.imwrite(r"E:/29-8-2022/anomaly_img/"+str(cnt)+".jpg",image)
-            cv2.imwrite(path_anomaly_image+str(myfilename[cnt]),image)
+            cv2.imwrite(path_anomaly_image+'_'+str(score[1])+'_'+str(myfilename[cnt]),image)
         # print (myfilename[cnt])
         cnt=cnt+1
 

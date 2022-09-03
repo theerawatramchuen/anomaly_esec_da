@@ -22,7 +22,7 @@ from data import IMAGENET_MEAN, IMAGENET_STD
 
 import glob
 
-path_train_img = 'E:/30-8-2022/cropped/train/*.png' #'D:/AutomationProgram/ind_knn_ad/dataset/train/good/*.jpg'
+path_train_img = 'E:/2-9-2022/black-not/cropped/train/*.png' # E:\1-9-2022\black-not\cropped\train 'D:/AutomationProgram/ind_knn_ad/dataset/train/good/*.jpg'
 
 image_train = []
 
