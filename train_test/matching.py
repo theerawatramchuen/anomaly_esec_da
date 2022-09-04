@@ -8,7 +8,7 @@ import csv
 template = cv.imread('template.jpg',0) # Find Template in image
 
 # Loop for all images in IMAGE_PATH folder
-IMAGE_PATH = r'E:\2-9-2022'  # E:\2-9-2022\black-not\error_images\temp
+IMAGE_PATH = r'C:\Users\41162395\anomaly-python\train_test'  # E:\2-9-2022\black-not\error_images\temp
 os.chdir(IMAGE_PATH)
 myf = open('result.csv', 'w',newline='') 
 writer = csv.writer(myf)
