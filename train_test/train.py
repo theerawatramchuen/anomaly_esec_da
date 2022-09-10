@@ -1,3 +1,8 @@
+## Input Parameter Start Here ##
+path_train_img = 'E:/7-9-2022/dev1/cropped/train/*.jpg'  ## Path train images
+print (path_train_img)
+## Input Parameter end Here ##
+
 from contextlib import contextmanager
 from io import StringIO
 from statistics import mode
@@ -21,8 +26,6 @@ from models import SPADE, KNNExtractor
 from data import IMAGENET_MEAN, IMAGENET_STD
 
 import glob
-
-path_train_img = 'E:/2-9-2022/black-not/cropped/train/*.png' # E:\1-9-2022\black-not\cropped\train 'D:/AutomationProgram/ind_knn_ad/dataset/train/good/*.jpg'
 
 image_train = []
 

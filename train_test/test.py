@@ -1,11 +1,20 @@
+## Input Parameter Start Here ##
+acm = 115 # Anomaly Score Max
+path_anomaly_image = r'E:/7-9-2022/dev1/cropped/reject/'         # Path for store anomaly images
+path_test_img_dir = r'E:/7-9-2022/dev1/cropped/'  # Path for image under test
+## Input Parameter End Here ##
+
+import glob
 from contextlib import contextmanager
+from importlib.resources import path
 from io import StringIO
 from statistics import mode
 from matplotlib import image
 # from streamlit.report_thread import REPORT_CONTEXT_ATTR_NAME
 from threading import current_thread
-import sys
+import sys, os
 from time import sleep
+import time
 
 from PIL import Image
 import io
@@ -15,6 +24,7 @@ import matplotlib.pyplot as plt
 import torch
 import torchvision.transforms as T
 import cv2
+import csv
 
 transform = T.ToPILImage()
 # sys.path.append('./indad')
@@ -23,16 +33,19 @@ from data import MVTecDataset, StreamingDataset
 from models import SPADE, KNNExtractor
 from data import IMAGENET_MEAN, IMAGENET_STD
 
-import glob
+os.chdir(path_anomaly_image)
+myf = open('result.csv', 'w',newline='') 
+writer = csv.writer(myf)
+row = ["File Path",'ACM','Time']
+writer.writerow(row)
 
-## Input Parameter Start Here ##
-acm = 120   # Anomaly Score Max
-path_anomaly_image = r'E:/2-9-2022/black-not/cropped/reject/'         # Path for store anomaly images
-path_test_img_dir = r'E:/2-9-2022/black-not/cropped/'  # Path for image under test
-## Input Parameter End Here ##
+print ("Test Imge dir :",path_test_img_dir)
+print ("Anomaly Image dir :",path_anomaly_image)
 
 path_test_img_dir_len = len(path_test_img_dir)
-path_test_img = str(path_test_img_dir) + '*.png'
+path_test_img = str(path_test_img_dir) + '*.jpg'
+
+img_qty = 0
 
 image_test = []
 myfilename = []
@@ -45,7 +58,8 @@ def load_image():
         image_test.append(img_byte)
         myfilename.append(item)
     # print(myfilename)
-    print(len(myfilename))
+    img_qty = len(myfilename)
+    print(img_qty)
     for i in range(len(myfilename)):
         # print (myfilename[i])
         x = str(myfilename[i])
@@ -73,14 +87,14 @@ def main():
                     backbone_name="efficientnet_b0",
                 )
     if image_test is not None:
-        model = torch.load('weight_normal.pt')
+        model = torch.load(r'C:/Users/41162395/anomaly-python/train_test/weight_normal.pt')
     model.eval()
     cnt = 0
     for img in test_dataset:
         sample, *_ = img
         img_lvl_norm,pixel_lvl_norm = model.predict(sample.unsqueeze(0))
         score = pixel_lvl_norm.min(),pixel_lvl_norm.max()
-        # print("score min : {:.0f}".format(score[0]))
+        asm = str("asm{:.0f}".format(score[1]))
         print(str(cnt)+" Score max : {:.0f}   ".format(score[1])+str(myfilename[cnt]))
         if (score[1]) > acm:
             #mynp = sample.unsqueeze(0).cpu().detach().numpy()
@@ -91,8 +105,17 @@ def main():
             gray = cv2.cvtColor(t, cv2.COLOR_BGR2GRAY)
             image = cv2.rotate(gray, cv2.ROTATE_90_CLOCKWISE)
             # cv2.imwrite(r"E:/29-8-2022/anomaly_img/"+str(cnt)+".jpg",image)
-            cv2.imwrite(path_anomaly_image+'_'+str(score[1])+'_'+str(myfilename[cnt]),image)
-        # print (myfilename[cnt])
+            img_cropped = cv2.imread(path_test_img_dir+str(myfilename[cnt]))
+            cv2.imwrite(path_anomaly_image+asm+str(myfilename[cnt]),img_cropped)
+            # cv2.imwrite(path_anomaly_image+'_'+str(score[1])+'_'+str(myfilename[cnt]),image)
+            # print (path_anomaly_image+myfilename[cnt])
+            # print (path_test_img_dir+str(myfilename[cnt]))
+
+            row = [path_anomaly_image+asm+str(myfilename[cnt]),score[1],time.time()]
+            writer.writerow(row)
+        actual_acm = score[1].item()  ## Convert tensor to float
+        row = [path_anomaly_image+asm+str(myfilename[cnt]),actual_acm,time.time()]
+        writer.writerow(row)
         cnt=cnt+1
 
 if __name__ == "__main__":

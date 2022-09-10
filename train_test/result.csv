@@ -1,11 +1,14 @@
 File Path,Top-left,Bottom-Right,Time
-C:\Users\41162395\anomaly-python\train_test\1661988984_144861.jpg,"(5, 444)","(222, 465)",1662291421.4143574
-C:\Users\41162395\anomaly-python\train_test\1662001740_6774678.jpg,"(5, 433)","(222, 454)",1662291421.4193685
-C:\Users\41162395\anomaly-python\train_test\1662001949_5543334.jpg,"(5, 433)","(222, 454)",1662291421.4304178
-C:\Users\41162395\anomaly-python\train_test\1662092820_7696736.jpg,"(19, 433)","(236, 454)",1662291421.4642224
-C:\Users\41162395\anomaly-python\train_test\template.jpg,"(0, 0)","(217, 21)",1662291421.466221
-C:\Users\41162395\anomaly-python\train_test\test1.jpg,"(19, 433)","(236, 454)",1662291421.4772208
-C:\Users\41162395\anomaly-python\train_test\test2.jpg,"(19, 433)","(236, 454)",1662291421.4882596
-C:\Users\41162395\anomaly-python\train_test\test3.jpg,"(18, 444)","(235, 465)",1662291421.4992545
-C:\Users\41162395\anomaly-python\train_test\test4.jpg,"(19, 433)","(236, 454)",1662291421.509219
-C:\Users\41162395\anomaly-python\train_test\test5-20.jpg,"(20, 433)","(237, 454)",1662291421.5197806
+C:\Users\41162395\anomaly-python\train_test\1661988984_144861.jpg,"(5, 444)","(222, 465)",1662714265.2261624
+C:\Users\41162395\anomaly-python\train_test\1662001740_6774678.jpg,"(5, 433)","(222, 454)",1662714265.2361627
+C:\Users\41162395\anomaly-python\train_test\1662001949_5543334.jpg,"(5, 433)","(222, 454)",1662714265.2471292
+C:\Users\41162395\anomaly-python\train_test\1662031877_6101527.jpg,"(5, 443)","(222, 464)",1662714265.2571502
+C:\Users\41162395\anomaly-python\train_test\1662092820_7696736.jpg,"(19, 433)","(236, 454)",1662714265.2661638
+C:\Users\41162395\anomaly-python\train_test\1662237130_2321591.jpg,"(19, 433)","(236, 454)",1662714265.2761626
+C:\Users\41162395\anomaly-python\train_test\1662237378_8783102.jpg,"(20, 445)","(237, 466)",1662714265.2871625
+C:\Users\41162395\anomaly-python\train_test\template.jpg,"(0, 0)","(217, 21)",1662714265.2881322
+C:\Users\41162395\anomaly-python\train_test\test1.jpg,"(19, 433)","(236, 454)",1662714265.3001628
+C:\Users\41162395\anomaly-python\train_test\test2.jpg,"(19, 433)","(236, 454)",1662714265.310129
+C:\Users\41162395\anomaly-python\train_test\test3.jpg,"(18, 444)","(235, 465)",1662714265.321994
+C:\Users\41162395\anomaly-python\train_test\test4.jpg,"(19, 433)","(236, 454)",1662714265.3329916
+C:\Users\41162395\anomaly-python\train_test\test5-20.jpg,"(20, 433)","(237, 454)",1662714265.3430262
