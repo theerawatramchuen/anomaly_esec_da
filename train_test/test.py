@@ -1,7 +1,7 @@
 ## Input Parameter Start Here ##
-acm = 115 # Anomaly Score Max
-path_anomaly_image = r'E:/7-9-2022/dev1/cropped/reject/'         # Path for store anomaly images
-path_test_img_dir = r'E:/7-9-2022/dev1/cropped/'  # Path for image under test
+acm = 110 # Anomaly Score Max
+path_anomaly_image = r'E:/10-9-2022/dev2/cropped/reject/'         # Path for store anomaly images
+path_test_img_dir = r'E:/10-9-2022/dev2/cropped/reject1/'  # Path for image under test
 ## Input Parameter End Here ##
 
 import glob
@@ -36,7 +36,7 @@ from data import IMAGENET_MEAN, IMAGENET_STD
 os.chdir(path_anomaly_image)
 myf = open('result.csv', 'w',newline='') 
 writer = csv.writer(myf)
-row = ["File Path",'ACM','Time']
+row = ["File Path",'ASM','Time']
 writer.writerow(row)
 
 print ("Test Imge dir :",path_test_img_dir)
@@ -106,15 +106,9 @@ def main():
             image = cv2.rotate(gray, cv2.ROTATE_90_CLOCKWISE)
             # cv2.imwrite(r"E:/29-8-2022/anomaly_img/"+str(cnt)+".jpg",image)
             img_cropped = cv2.imread(path_test_img_dir+str(myfilename[cnt]))
-            cv2.imwrite(path_anomaly_image+asm+str(myfilename[cnt]),img_cropped)
-            # cv2.imwrite(path_anomaly_image+'_'+str(score[1])+'_'+str(myfilename[cnt]),image)
-            # print (path_anomaly_image+myfilename[cnt])
-            # print (path_test_img_dir+str(myfilename[cnt]))
-
-            row = [path_anomaly_image+asm+str(myfilename[cnt]),score[1],time.time()]
-            writer.writerow(row)
+            cv2.imwrite(path_anomaly_image+asm+'_'+str(myfilename[cnt]),img_cropped)
         actual_acm = score[1].item()  ## Convert tensor to float
-        row = [path_anomaly_image+asm+str(myfilename[cnt]),actual_acm,time.time()]
+        row = [path_anomaly_image+asm+'_'+str(myfilename[cnt]),actual_acm,time.time()]
         writer.writerow(row)
         cnt=cnt+1
 

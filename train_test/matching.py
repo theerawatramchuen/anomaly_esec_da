@@ -1,11 +1,18 @@
 # Loop for all images in IMAGE_PATH folder
-IMAGE_PATH = 'E:/7-9-2022/dev1'  # E:\2-9-2022\black-not\error_images\temp
-CROPPED_PATH = 'E:/7-9-2022/dev1/cropped'
+from operator import truediv
+
+
+IMAGE_PATH = r'E:/10-9-2022/dev2'  # E:\2-9-2022\black-not\error_images\temp
+CROPPED_PATH = r'E:/10-9-2022/dev2/cropped'
 
 # ROI to cropped position Topleft X,Y and Width, Height
-roi_tpleft = (270,203-12)
-roi_w = 97
-roi_h = 86
+roi_tpleft = (274,185-2)
+roi_w = 109
+roi_h = 107
+
+# Setup roi to run only 1 unit
+setup = False
+## Input Parameter end Here ##
 
 import time
 import os
@@ -22,6 +29,7 @@ myf = open('result.csv', 'w',newline='')
 writer = csv.writer(myf)
 row = ["File Path",'Top-left','Bottom-Right','Time']
 writer.writerow(row)
+
 # iterate through all file
 mycounter = 0
 for file in os.listdir():
@@ -29,9 +37,8 @@ for file in os.listdir():
     # Check whether file is in text format or not
     if file.endswith(".jpg"):
         file_path = f"{IMAGE_PATH}\{file}"
-        start = time.time()
 
-        # print (file_path)
+        start = time.time()
         img = cv.imread(file_path,0)
         img4cropped = img
         img2 = img.copy()
@@ -44,8 +51,8 @@ for file in os.listdir():
         min_val, max_val, min_loc, max_loc = cv.minMaxLoc(res)
         top_left = max_loc
         bottom_right = (top_left[0] + w, top_left[1] + h)
-
         end = time.time()
+
         row = [file_path,top_left,bottom_right,time.time()]
         writer.writerow(row)
         ver_offset = top_left[1]-433
@@ -56,9 +63,12 @@ for file in os.listdir():
                 roi_tpleft[0],roi_tpleft[1],os_roi_tpleft,os_roi_bnright)#bottom_right[0],bottom_right[1],time.time(),'Sec')
             cropped_image = img4cropped[os_roi_tpleft[1]:os_roi_bnright[1],os_roi_tpleft[0]:os_roi_bnright[0]]
             #cropped_image = img4cropped[256:381,256:278]
-            cv.imwrite(os.path.join(CROPPED_PATH,str(time.time())+'.jpg'),cropped_image)
- 
-        #exit()   # Unomment this line to run single 1st image
+            cv.imwrite(os.path.join(CROPPED_PATH,file),cropped_image)
+            # cv.imwrite(os.path.join(CROPPED_PATH,str(time.time())+'.jpg'),cropped_image)
+        else:
+            print('Template Position out of Range')
+        if setup:
+            exit()   # run single 1st image
 
 myf.close()    
 
