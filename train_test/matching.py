@@ -1,18 +1,21 @@
-# Loop for all images in IMAGE_PATH folder
-from operator import truediv
-
-
-IMAGE_PATH = r'E:/10-9-2022/dev2'  # E:\2-9-2022\black-not\error_images\temp
-CROPPED_PATH = r'E:/10-9-2022/dev2/cropped'
+## Input Parameter START Here ##
+IMAGE_PATH = r'E:/19-9-2022/dev1' # r'E:/@@@temp' # 
+CROPPED_PATH = r'E:/19-9-2022/dev1/cropped' # r'E:/@@@temp/cropped' # 
 
 # ROI to cropped position Topleft X,Y and Width, Height
-roi_tpleft = (274,185-2)
-roi_w = 109
-roi_h = 107
+roi_tpleft = (289,182)#(258,157)
+roi_w      = 106  #120
+roi_h      = 106   #116
 
 # Setup roi to run only 1 unit
-setup = False
-## Input Parameter end Here ##
+yes_setup = 0      # 1 is setup ,  0 is run 
+
+## Input Parameter END Here ##
+
+if yes_setup == 0:
+   setup = False #
+else:
+    setup = True
 
 import time
 import os

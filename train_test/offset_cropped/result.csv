@@ -1,5 +1,8 @@
 File Path,Top-left,Bottom-Right,Time
-C:/Users/41162395/anomaly-python/train_test/offset_cropped\1661988984_144861.jpg,"(5, 444)","(222, 465)",1662772752.2330606
-C:/Users/41162395/anomaly-python/train_test/offset_cropped\1662001740_6774678.jpg,"(5, 433)","(222, 454)",1662772752.2480636
-C:/Users/41162395/anomaly-python/train_test/offset_cropped\1662001949_5543334.jpg,"(5, 433)","(222, 454)",1662772752.261061
-C:/Users/41162395/anomaly-python/train_test/offset_cropped\1662031877_6101527.jpg,"(5, 443)","(222, 464)",1662772752.2730596
+C:/Users/41162395/anomaly-python/train_test/offset_cropped\1661988984_144861.jpg,"(5, 444)","(222, 465)",1663209124.9888515
+C:/Users/41162395/anomaly-python/train_test/offset_cropped\1662001740_6774678.jpg,"(5, 433)","(222, 454)",1663209125.0028527
+C:/Users/41162395/anomaly-python/train_test/offset_cropped\1662001949_5543334.jpg,"(5, 433)","(222, 454)",1663209125.0148554
+C:/Users/41162395/anomaly-python/train_test/offset_cropped\1662031877_6101527.jpg,"(5, 443)","(222, 464)",1663209125.0268862
+C:/Users/41162395/anomaly-python/train_test/offset_cropped\test3.jpg,"(18, 444)","(235, 465)",1663209125.0398512
+C:/Users/41162395/anomaly-python/train_test/offset_cropped\test4.jpg,"(19, 433)","(236, 454)",1663209125.0528874
+C:/Users/41162395/anomaly-python/train_test/offset_cropped\test5-20.jpg,"(20, 433)","(237, 454)",1663209125.0738487
