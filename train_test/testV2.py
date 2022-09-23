@@ -1,8 +1,8 @@
 ## Input Parameter Start Here ##
 acm = 120 # Anomaly Score Max
-pixel_count_max = 100
-path_anomaly_image = r'F:/20-9-2022/dev3/cropped/reject/'         # Path for store anomaly images
-path_test_img_dir  = r'F:/20-9-2022/dev3/cropped/reject1/'  # Path for image under test
+pixel_count_max = 800
+path_anomaly_image = r'E:/21-9-2022/dev1/cropped/reject/'         # Path for store anomaly images
+path_test_img_dir  = r'E:/21-9-2022/dev1/cropped/'  # Path for image under test
 ## Input Parameter End Here ##
 
 import glob
@@ -29,7 +29,7 @@ import csv
 
 transform = T.ToPILImage()
 # sys.path.append('./indad')
-sys.path.append('F:/anomaly_esec_da/ind_knn_ad/indad')
+sys.path.append('C:/Users41162395/anomaly/ind_knn_ad/indad')
 from data import MVTecDataset, StreamingDataset
 from models import SPADE, KNNExtractor
 from data import IMAGENET_MEAN, IMAGENET_STD
@@ -88,7 +88,7 @@ def main():
                     backbone_name="efficientnet_b0",
                 )
     if image_test is not None:
-        model = torch.load(r'F:/anomaly_esec_da/train_test/weight_normal.pt')
+        model = torch.load(r'C:/Users/41162395/anomaly-python/train_test/weight_normal.pt')
     model.eval()
     cnt = 0
     for img in test_dataset:
@@ -107,7 +107,7 @@ def main():
             #image = cv2.rotate(gray, cv2.ROTATE_90_CLOCKWISE)
             # cv2.imwrite(r"E:/29-8-2022/anomaly_img/"+str(cnt)+".jpg",image)
             img_cropped = cv2.imread(path_test_img_dir+str(myfilename[cnt]))
-            cv2.imwrite(path_anomaly_image+asm+'_'+str(myfilename[cnt]),img_cropped)
+            cv2.imwrite(path_anomaly_image+asm+'_'+str(torch.numel(pixel_lvl_norm[pixel_lvl_norm>acm]))+'_'+str(myfilename[cnt]),img_cropped)
 
             #print(np.amax(mynp))
             #print(pixel_lvl_norm)
@@ -116,9 +116,9 @@ def main():
             #print('Anomaly Score Min/Max :',score)
             #print('Anomaly Pixel Min :',torch.amin(pixel_lvl_norm))
             #print('Anomaly Pixel Max :',torch.amax(pixel_lvl_norm))
-            print('Count Anomaly Pixel > 106 :',torch.numel(pixel_lvl_norm[pixel_lvl_norm>acm]),'Pixels')
+            print(cnt,'Count Anomaly Pixel >',pixel_count_max,':',torch.numel(pixel_lvl_norm[pixel_lvl_norm>acm]),'Pixels')
         else:
-            print(score)
+            print(cnt,score)
         
         actual_acm = score[1].item()  ## Convert tensor to float
         row = [path_anomaly_image+asm+'_'+str(myfilename[cnt]),actual_acm,time.time()]
