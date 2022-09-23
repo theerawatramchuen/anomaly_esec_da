@@ -1,11 +1,11 @@
 ## Input Parameter START Here ##
-IMAGE_PATH = r'E:/19-9-2022/dev1' # r'E:/@@@temp' # 
-CROPPED_PATH = r'E:/19-9-2022/dev1/cropped' # r'E:/@@@temp/cropped' # 
+IMAGE_PATH = r'E:/20-9-2022/dev3' # r'E:/@@@temp' # 
+CROPPED_PATH = r'E:/20-9-2022/dev3/cropped' # r'E:/@@@temp/cropped' # 
 
 # ROI to cropped position Topleft X,Y and Width, Height
-roi_tpleft = (289,182)#(258,157)
-roi_w      = 106  #120
-roi_h      = 106   #116
+roi_tpleft = (279,195)#(258,157)
+roi_w      = 102  #120
+roi_h      = 100-2   #116
 
 # Setup roi to run only 1 unit
 yes_setup = 0      # 1 is setup ,  0 is run 

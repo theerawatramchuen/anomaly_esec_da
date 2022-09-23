@@ -1,7 +1,7 @@
 ## Input Parameter Start Here ##
 acm = 117 # Anomaly Score Max
-path_anomaly_image = r'E:/19-9-2022/dev1/cropped/reject/'         # Path for store anomaly images
-path_test_img_dir  = r'E:/19-9-2022/dev1/cropped/'  # Path for image under test
+path_anomaly_image = r'E:/20-9-2022/dev2/cropped/reject/'         # Path for store anomaly images
+path_test_img_dir  = r'E:/20-9-2022/dev2/cropped/'  # Path for image under test
 ## Input Parameter End Here ##
 
 import glob

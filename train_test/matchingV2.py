@@ -1,9 +1,9 @@
 ## Input Parameter START Here ##
-IMAGE_PATH = r'E:/20-9-2022/dev3' # r'E:/@@@temp' # 
-CROPPED_PATH = r'E:/20-9-2022/dev3/cropped' # r'E:/@@@temp/cropped' # 
+IMAGE_PATH = r'E:/21-9-2022/dev1' # r'E:/@@@temp' # 
+CROPPED_PATH = r'E:/21-9-2022/dev1/cropped' # r'E:/@@@temp/cropped' # 
 
 # ROI to cropped position Topleft X,Y and Width, Height
-roi_tpleft = (280,194)#(258,157)
+roi_tpleft = (280,194-2)#(258,157)
 roi_w      = 100  #120
 roi_h      = 100   #116
 
